@@ -6,3 +6,8 @@ input {
 h2 {
   font-size: 1.4em;
 }
+
+.header-logo {
+  width: auto;
+  height: 2rem;
+}

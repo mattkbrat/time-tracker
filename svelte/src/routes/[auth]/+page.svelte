@@ -1,11 +1,10 @@
-<script>
-	export let data;
-</script>
-
-<h1>blog</h1>
-
 <ul>
-	{#each data.sections as { slug, title }}
-		<li><a href="/blog/{slug}">{title}</a></li>
-	{/each}
+	<li>
+
+		<a href="auth/login">Login</a>
+	</li>
+	<li>
+
+		<a href="auth/profile">Profile</a>
+	</li>
 </ul>
