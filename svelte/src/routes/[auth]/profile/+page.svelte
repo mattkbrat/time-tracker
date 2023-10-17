@@ -12,3 +12,6 @@
 <form method="post" action="?/logout" use:enhance>
 	<input type="submit" value="Sign out" />
 </form>
+<form method="post" action="?/delete" use:enhance>
+	<input type="submit" value="Delete Profile" />
+</form>

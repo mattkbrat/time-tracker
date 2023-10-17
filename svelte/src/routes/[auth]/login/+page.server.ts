@@ -65,7 +65,7 @@ export const actions = {
 
       const userCookie = JSON.stringify(user)
 
-      cookies.set('user', userCookie)
+      cookies.set('user', userCookie, { path: '/' })
 
       return message(loginForm, 'Login form submitted');
 

@@ -30,5 +30,16 @@ export const actions: Actions = {
 		await auth.invalidateSession(session.sessionId); // invalidate session
 		locals.auth.setSession(null); // remove cookie
 		throw redirect(302, "/login"); // redirect to login page
+	},
+	delete: async ({locals}) => {
+		const session = await locals.auth.validate();
+		const {sessionId, user} = session
+		if (!session) return fail(401);
+
+		const {userId} = user;
+		await auth.invalidateSession(sessionId); // invalidate session
+		locals.auth.setSession(null); // remove cookie
+		await auth.deleteUser(userId)
+		throw redirect(302, "/login"); // redirect to login page
 	}
 };

@@ -2,15 +2,14 @@ import { error } from "@sveltejs/kit";
 import { auth } from "$lib/server";
 
 /** @type { import('./$types').PageServerLoad} */
-export const load = async ( { params, cookies }) => {
+export const load = async ( { params, cookies, locals }) => {
 
-  const sessionId = cookies.get('sessionid')
+  const session = await locals.auth.validate()
 
-  const session = sessionId ? await auth.validateSession(sessionId) : {};
-  if (session.fresh) {
-    // session was reset
-    // extend cookie expiration
+  if (!session || session.state !== 'active') {
+    throw error(401, 'Must be logged in to view this page')
   }
 
-  throw error(401, 'Must be logged in to view this page')
+  return
+
 }
